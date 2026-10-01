@@ -19,9 +19,9 @@ The release APK is generated at `build/app/outputs/flutter-apk/app-release.apk`.
 | Workstream | Owner | Evidence |
 | --- | --- | --- |
 | Team 1 — Care Systems | Gowtham Revanur | `lib/pet_game.dart`, timer ownership in `lib/main.dart`, and `test/` |
-| Team 2 — Pet Personality | Add team member(s) after integration | PR, review, and implementation link |
+| Team 2 — Pet Personality | Swamireddy Ailuri | Commit `be04e6c` on `team-2/pet-personality` |
 
-> Add the shared GitHub issue and pull-request links here after the team repository is created. Do not invent evidence.
+Team 2 added activity selection, pet messages/reactions, animated feedback, and reduced-motion handling. Team 1 integrated that branch in merge commit `e7752b6`. Add the GitHub review/PR links here after the review is recorded; do not invent evidence.
 
 ## Implemented care rules
 
@@ -48,7 +48,7 @@ All meters are clamped to 0–100. The visible mood label is not color-only: 0�
 
 ## Test evidence
 
-Automated tests cover feed/play boundaries, hunger overflow, loss locking, strict win eligibility, reset behavior, and a short-duration widget win-timer check. Run `flutter test` before every commit and after Team 2 merges.
+Automated tests cover feed/play boundaries, hunger overflow, loss locking, strict win eligibility, reset behavior, short-duration win timing, and activity-selection feedback. Run `flutter test` before every commit and after Team 2 merges.
 
 Manual checks still required before submission:
 
@@ -65,3 +65,4 @@ Manual checks still required before submission:
 | Hunger and win timers | Lifecycle-owned periodic/one-shot work is started and canceled safely | `main.dart`, `pet_screen_test.dart` |
 | Energy plus Play/Rest selection | Multiple related values transition predictably from a selected activity | UI controls and `PetGame` |
 | Pause/Resume session control | Timer resources stop and restart without duplicate active hunger timers | `main.dart` |
+| Visual polish and accessible motion | Pet scale, action reaction, derived speech, and meter animation reflect state; `disableAnimations` removes nonessential motion | `main.dart` |
