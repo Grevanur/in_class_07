@@ -21,7 +21,7 @@ The release APK is generated at `build/app/outputs/flutter-apk/app-release.apk`.
 | Team 1 — Care Systems | Gowtham Revanur | `lib/pet_game.dart`, timer ownership in `lib/main.dart`, and `test/` |
 | Team 2 — Pet Personality | Swamireddy Ailuri | Commit `be04e6c` on `team-2/pet-personality` |
 
-Team 2 added activity selection, pet messages/reactions, animated feedback, and reduced-motion handling. Team 1 integrated that branch in merge commit `e7752b6`. Add the GitHub review/PR links here after the review is recorded; do not invent evidence.
+Team 2 added activity selection, pet messages/reactions, animated feedback, and reduced-motion handling. Team 1 reviewed and merged the work through [PR #1](https://github.com/Grevanur/in_class_07/pull/1) in merge commit `cd290b5`.
 
 ## Implemented care rules
 
@@ -55,7 +55,7 @@ Manual checks still required before submission:
 1. Capture mood behavior at happiness 29, 30, 70, and 71.
 2. Confirm a three-minute production win and that dropping to 80 cancels it.
 3. Install and launch the merged release APK on the intended device.
-4. Add final screenshots, asset attribution, issue/PR links, and both teams' review evidence.
+4. Capture any screenshots requested by the instructor for the final submission.
 
 ## Feature-to-outcome map
 
