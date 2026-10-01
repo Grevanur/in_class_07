@@ -38,6 +38,10 @@ The release APK is generated at `build/app/outputs/flutter-apk/app-release.apk`.
 
 All meters are clamped to 0–100. The visible mood label is not color-only: 0–29 is Unhappy/red, 30–70 is Neutral/yellow, and 71–100 is Happy/green. The grayscale `assets/pet.png` is tinted with `ColorFiltered` using `BlendMode.modulate`.
 
+## Asset attribution
+
+`assets/pet.png` is an original project asset generated for this assignment with OpenAI image generation. It has no downloaded third-party source or attribution requirement. Material icons are provided by the Flutter framework.
+
 ## Architecture and trade-off
 
 `PetGame` owns meter transitions, boundary rules, and terminal outcomes. `PetScreen` owns Flutter-specific resources: the name controller and hunger/win timers. This keeps rules unit-testable without a widget tree, while timers stay tied to `initState`/`dispose`. The trade-off is a small amount of coordination after each UI state update so timer state reflects the rule state.
