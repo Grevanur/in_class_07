@@ -25,10 +25,7 @@ class DigitalPetApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
-      home: PetScreen(
-        hungerInterval: hungerInterval,
-        winDuration: winDuration,
-      ),
+      home: PetScreen(hungerInterval: hungerInterval, winDuration: winDuration),
     );
   }
 }
@@ -106,8 +103,7 @@ class _PetScreenState extends State<PetScreen> {
 
         setState(() {
           _game.win();
-          _feedback =
-              'You kept ${_game.name} happy for three minutes!';
+          _feedback = 'You kept ${_game.name} happy for three minutes!';
           _reaction = '🏆';
         });
 
@@ -124,36 +120,20 @@ class _PetScreenState extends State<PetScreen> {
 
     switch (_selectedActivity) {
       case 'Feed':
-        _careForPet(
-          _game.feed,
-          '${_game.name} enjoyed the meal! 🍖',
-          '🍖',
-        );
+        _careForPet(_game.feed, '${_game.name} enjoyed the meal! 🍖', '🍖');
         break;
 
       case 'Play':
-        _careForPet(
-          _game.play,
-          '${_game.name} had fun playing! 🎾',
-          '🎾',
-        );
+        _careForPet(_game.play, '${_game.name} had fun playing! 🎾', '🎾');
         break;
 
       case 'Rest':
-        _careForPet(
-          _game.rest,
-          '${_game.name} feels rested! 💤',
-          '💤',
-        );
+        _careForPet(_game.rest, '${_game.name} feels rested! 💤', '💤');
         break;
     }
   }
 
-  void _careForPet(
-    void Function() action,
-    String feedback,
-    String reaction,
-  ) {
+  void _careForPet(void Function() action, String feedback, String reaction) {
     if (_isPaused || !_game.canCareForPet) return;
 
     setState(() {
@@ -186,9 +166,7 @@ class _PetScreenState extends State<PetScreen> {
   void _togglePause() {
     setState(() {
       _isPaused = !_isPaused;
-      _feedback = _isPaused
-          ? 'Care session paused.'
-          : 'Care session resumed.';
+      _feedback = _isPaused ? 'Care session paused.' : 'Care session resumed.';
     });
 
     if (_isPaused) {
@@ -301,18 +279,14 @@ class _PetScreenState extends State<PetScreen> {
     // Accessibility: respect the device's reduced-motion preference.
     final reduceMotion = MediaQuery.of(context).disableAnimations;
 
-    final petScale =
-        _moodScale * (_petBouncing && !reduceMotion ? 1.08 : 1.0);
+    final petScale = _moodScale * (_petBouncing && !reduceMotion ? 1.08 : 1.0);
 
     final animationDuration = reduceMotion
         ? Duration.zero
         : const Duration(milliseconds: 250);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Digital Pet Care'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Digital Pet Care'), centerTitle: true),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(20),
@@ -333,10 +307,7 @@ class _PetScreenState extends State<PetScreen> {
                   ),
                 ),
                 const SizedBox(width: 8),
-                FilledButton(
-                  onPressed: _saveName,
-                  child: const Text('Save'),
-                ),
+                FilledButton(onPressed: _saveName, child: const Text('Save')),
               ],
             ),
 
@@ -344,8 +315,7 @@ class _PetScreenState extends State<PetScreen> {
 
             // PET DISPLAY
             Semantics(
-              label:
-                  '${_game.name}, ${_game.mood} mood. $_petMessage',
+              label: '${_game.name}, ${_game.mood} mood. $_petMessage',
               image: true,
               child: Column(
                 children: [
@@ -361,20 +331,14 @@ class _PetScreenState extends State<PetScreen> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: _moodColor.withValues(alpha: 0.12),
-                            border: Border.all(
-                              color: _moodColor,
-                              width: 3,
-                            ),
+                            border: Border.all(color: _moodColor, width: 3),
                           ),
                           child: ColorFiltered(
                             colorFilter: ColorFilter.mode(
                               _moodColor,
                               BlendMode.modulate,
                             ),
-                            child: Image.asset(
-                              'assets/pet.png',
-                              height: 170,
-                            ),
+                            child: Image.asset('assets/pet.png', height: 170),
                           ),
                         ),
 
@@ -409,9 +373,7 @@ class _PetScreenState extends State<PetScreen> {
                       _petMessage,
                       key: ValueKey(_petMessage),
                       textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
+                      style: Theme.of(context).textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -460,10 +422,7 @@ class _PetScreenState extends State<PetScreen> {
               child: Card(
                 child: Padding(
                   padding: const EdgeInsets.all(14),
-                  child: Text(
-                    _feedback,
-                    textAlign: TextAlign.center,
-                  ),
+                  child: Text(_feedback, textAlign: TextAlign.center),
                 ),
               ),
             ),
@@ -540,16 +499,9 @@ class _PetScreenState extends State<PetScreen> {
               alignment: WrapAlignment.center,
               children: [
                 OutlinedButton.icon(
-                  onPressed:
-                      _game.canCareForPet ? _togglePause : null,
-                  icon: Icon(
-                    _isPaused
-                        ? Icons.play_arrow
-                        : Icons.pause,
-                  ),
-                  label: Text(
-                    _isPaused ? 'Resume' : 'Pause',
-                  ),
+                  onPressed: _game.canCareForPet ? _togglePause : null,
+                  icon: Icon(_isPaused ? Icons.play_arrow : Icons.pause),
+                  label: Text(_isPaused ? 'Resume' : 'Pause'),
                 ),
                 OutlinedButton.icon(
                   onPressed: _reset,
@@ -563,8 +515,7 @@ class _PetScreenState extends State<PetScreen> {
 
             // ACCESSIBILITY NOTE
             Semantics(
-              label:
-                  'Mood is shown using text, icon feedback, and color.',
+              label: 'Mood is shown using text, icon feedback, and color.',
               child: Text(
                 'Mood: ${_game.mood} • '
                 'Color and text both communicate pet mood.',
@@ -603,16 +554,11 @@ class _Meter extends StatelessWidget {
           children: [
             Text(
               '$label: $value / 100',
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 4),
             TweenAnimationBuilder<double>(
-              tween: Tween<double>(
-                begin: 0,
-                end: value / 100,
-              ),
+              tween: Tween<double>(begin: 0, end: value / 100),
               duration: reduceMotion
                   ? Duration.zero
                   : const Duration(milliseconds: 400),
